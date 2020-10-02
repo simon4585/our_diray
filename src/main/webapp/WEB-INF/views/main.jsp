@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <title>Trip Diary</title>
     <style>
+    
         /*슬라이드 시작*/
         .slide{
             min-width: 1280px;
@@ -626,7 +627,7 @@ if('${msg}' != ""){
                 <ul class="nav_t2">
                     <c:choose>
 					<c:when test="${session_enabled eq 'true' }">
-						<li>${session_username}님[${session_userid}] 환영합니다</li>
+						<li>${session_username}님[${session_userid}]</li>
 						<li><a href="/logout">로그아웃</a>
 						</li>
 						<li><a href="#">마이페이지</a>
@@ -639,7 +640,7 @@ if('${msg}' != ""){
 					<c:otherwise>
 						<li><a href="/login">로그인</a>
 						</li>
-						<li><a href="/mypage/insert">회원가입</a>
+						<li><a href="/signUp">회원가입</a>
 						</li>
 					</c:otherwise>
 					</c:choose>
@@ -676,7 +677,7 @@ if('${msg}' != ""){
                 <ul class="nav2_t2">
                     <c:choose>
 					<c:when test="${session_enabled eq 'true'}">
-						<li>${session_username}님[${session_userid}] 환영합니다</li>
+						<li>${session_username}님[${session_userid}]</li>
 						<li><a href="/logout">로그아웃</a>
 						</li>
 						<li><a href="#">마이페이지</a>
@@ -689,7 +690,7 @@ if('${msg}' != ""){
 					<c:otherwise>
 						<li><a href="/login">로그인</a>
 						</li>
-						<li><a href="/mypage/insert">회원가입</a>
+						<li><a href="/signUp">회원가입</a>
 						</li>
 					</c:otherwise>
 					</c:choose>

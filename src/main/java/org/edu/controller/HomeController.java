@@ -15,6 +15,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.edu.service.IF_BoardService;
 import org.edu.service.IF_MemberService;
@@ -27,6 +28,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -61,6 +63,28 @@ public class HomeController {
 		
 		return "main";
 	}
+	
+	/*
+	 * 회원가입 폼입니다.
+	 */
+	@RequestMapping(value="/signUp", method=RequestMethod.GET)
+	public String signUp(Locale locale) throws Exception{
+		
+	   return "signUp";	
+	}
+	@RequestMapping(value = "/signUp", method = RequestMethod.POST)
+	   public String signUp(MemberVO memberVO, Locale locale, RedirectAttributes rdat) throws Exception {
+	      String new_pw = memberVO.getUser_pw(); //1234
+	      if(new_pw !="") {
+	       //스프링 시큐리티 4.x BCryptPasswordEncoder 암호화 사용
+	           BCryptPasswordEncoder bcryptPasswordEncoder = new BCryptPasswordEncoder(10);
+	           String bcryptPassword = bcryptPasswordEncoder.encode(new_pw);//예, 1234 -> 암호화 처리됨
+	           memberVO.setUser_pw(bcryptPassword); //DB에 들어가기전 값 set 시킴   
+	    }     memberService.insertMember(memberVO);
+	      rdat.addFlashAttribute("msg", "회원가입");
+	      return "redirect:/";
+	   }
+	
 	
 	/**
 	 * 국내여행지게시판리스트 입니다.

@@ -423,16 +423,16 @@
                     <li>숙소</li>
                 </ul>
                 <ul class="fade_nav1 fade_common">
-                    <li><a href="trip_boarlist">국내 먹거리</a></li>
-                    <li><a href="trip_boarlist">해외 먹거리</a></li>
+                    <li><a href="trip_boardlist">국내 먹거리</a></li>
+                    <li><a href="trip_boardlist">해외 먹거리</a></li>
                 </ul>
                 <ul class="fade_nav2 fade_common">
-                    <li><a href="trip_boarlist">국내 여행지</a></li>
-                    <li><a href="trip_boarlist">해외 여행지</a></li>
+                    <li><a href="trip_boardlist">국내 여행지</a></li>
+                    <li><a href="trip_boardlist">해외 여행지</a></li>
                 </ul>
                 <ul class="fade_nav3 fade_common">
-                    <li><a href="trip_boarlist">구경하기</a></li>
-                    <li><a href="trip_boarlist">숙소후기</a></li>
+                    <li><a href="trip_boardlist">구경하기</a></li>
+                    <li><a href="trip_boardlist">숙소후기</a></li>
                 </ul>
                 <ul class="nav_t2">
                     <li><a href="login">로그인</a></li>
@@ -456,16 +456,16 @@
                     <li>숙소</li>
                 </ul>
                 <ul class="fade_nav21 fade_common2">
-                    <li><a href="trip_boarlist">국내 먹거리</a></li>
-                    <li><a href="trip_boarlist">해외 먹거리</a></li>
+                    <li><a href="trip_boardlist">국내 먹거리</a></li>
+                    <li><a href="trip_boardlist">해외 먹거리</a></li>
                 </ul>
                 <ul class="fade_nav22 fade_common2">
-                    <li><a href="trip_boarlist">국내 여행지</a></li>
-                    <li><a href="trip_boarlist">해외 여행지</a></li>
+                    <li><a href="trip_boardlist">국내 여행지</a></li>
+                    <li><a href="trip_boardlist">해외 여행지</a></li>
                 </ul>
                 <ul class="fade_nav23 fade_common2">
-                    <li><a href="trip_boarlist">구경하기</a></li>
-                    <li><a href="trip_boarlist">숙소후기</a></li>
+                    <li><a href="trip_boardlist">구경하기</a></li>
+                    <li><a href="trip_boardlist">숙소후기</a></li>
                 </ul>
                 <ul class="nav2_t2">
                     <li><a href="login">로그인</a></li>
