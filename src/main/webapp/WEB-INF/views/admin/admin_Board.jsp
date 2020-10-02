@@ -256,44 +256,41 @@
                     </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td><img src="/resources/img/logo2.png"></td>
-                        <td><a href="#">다음생에 갈 수 있을까 한 곳1111111111111111111</a></td>
-                        <td>somej</td>
-                        <td>2020-09-20 09:14</td>
-                        <td>25</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td><img src="/resources/img/logo2.png"></td>
-                        <td><a href="#">제목</a></td>
-                        <td>somej</td>
-                        <td>2020-09-20 09:14</td>
-                        <td>45</td>
-                        <td>3</td>
-                      </tr>
+                     <c:forEach items="${boardList}" var="boardVO" varStatus="status">
+                    <tr>
+                      <td>${boardVO.rnum}</td>
+                      <td><a href="/admin/board/view?bno=${boardVO.bno}&page=${pageVO.page}">${boardVO.title}</a></td>
+                      <td>${boardVO.writer}</td>
+                      <td><span class="tag tag-success">
+                      <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVO.regdate}" />
+                      </span></td>
+                      <td><span class="badge badge-danger right">${boardVO.view_count}</span></td>
+                      <td>준비중입니다</td>
+                    </tr>
+                    </c:forEach>
                     </tbody>
                   </table>
                 </div>
                 <!-- /.table-responsive -->
               </div>
               <!-- /.card-body -->
-              <div class="card-footer clearfix">
-                <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">게시판생성</a>
-                <div class="card-tools">
-                  <ul class="pagination pagination justify-content-center">
-                    <li class="page-item"><a href="#" class="page-link">«</a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-                    <li class="page-item"><a href="#" class="page-link">»</a></li>
-                  </ul>
-                </div>
-              </div>
+              <nav aria-label="Contacts Page Navigation">
+             <ul class="pagination" style="position:relative;left:40%;">
+             <c:if test="${pageVO.prev}">
+             <li class="page-item">
+                <a class="page-link" href="/admin/admin_Board?page=${pageVO.startPage-1}&searchType=${pageVO.searchType}&searchKeyword=${pageVO.searchKeyword}">이전</a>
+             </li>
+             </c:if>
+             <c:forEach begin="${pageVO.startPage}" end="${pageVO.endPage}" var="idx">
+                <li class='page-item <c:out value="${idx==pageVO.page?'active':''}"/>'><a href="/admin/admin_Board?page=${idx}&searchType=${pageVO.searchType}&searchKeyword=${pageVO.searchKeyword}" class="page-link">${idx}</a></li>
+             </c:forEach>
+             <c:if test="${pageVO.next}">
+             <li class="page-item">
+                <a class="page-link" href="/admin/admin_Board?page=${pageVO.endPage+1}&searchType=${pageVO.searchType}&searchKeyword=${pageVO.searchKeyword}">다음</a>
+             </li>
+             </c:if>
+            </ul>  
+          </nav>
               <!-- /.card-footer -->
             </div>
       </div>

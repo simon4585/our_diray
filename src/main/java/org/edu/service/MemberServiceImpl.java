@@ -43,4 +43,10 @@ public class MemberServiceImpl implements IF_MemberService {
 		return memberDAO.viewMember(user_id);
 	}
 
+	@Override
+	public int countUserId(PageVO pageVO) throws Exception {
+		
+		return memberDAO.countUserId(pageVO);
+	}
+
 }

@@ -37,4 +37,21 @@ delete from tbl_member where user_id = #{user_id}
 <select id="viewMember" resultType="org.edu.vo.MemberVO">
  select * from tbl_member where user_id = #{user_id}
 </select>
+<select id="countUserId" resultType="int">
+select count(*) from tbl_member
+where 1 = 1
+<include refid="sqlWhere"></include>
+</select>
+<!-- 공통사용 검색쿼리 -->
+	<sql id="sqlWhere">
+		<if test="searchType !=null">
+			AND (
+			user_name LIKE '%'||#{searchKeyword}||'%'
+			OR
+			user_id LIKE '%'||#{searchKeyword}||'%'
+			OR
+			email LIKE '%'||#{searchKeyword}||'%'
+			)
+		</if>
+	</sql>
 </mapper>

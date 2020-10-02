@@ -44,6 +44,12 @@ public class MemberDAOImpl implements IF_MemberDAO {
 		return sqlSession.selectOne(mapperQuery+".viewMember", user_id);
 	}
 
+	@Override
+	public int countUserId(PageVO pageVO) throws Exception {
+	 return sqlSession.selectOne(mapperQuery +".countUserId" , pageVO);
+	 
+	}
+
 	
 
 }

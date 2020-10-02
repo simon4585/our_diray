@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -157,7 +158,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="/admin" class="brand-link">
-      <img src="admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="/resources/admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Trip Diary</span>
     </a>
@@ -256,51 +257,47 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <th>이메일</th>
                       <th>활성화</th>
                       <th>생성 날짜</th>
-                      <th>group_id</th>
+                      <th>권한</th>
                     </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>
-                          <a href="">somej</a>
-                        </td>
-                        <td>우정호</td>
-                        <td>somej@naver.com</td>
-                        <td>p</td>
-                        <td>2020-09-20 09:14</td>
-                        <td>관리자</td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <a href="">admin</a>
-                        </td>
-                        <td>백시몬</td>
-                        <td>******@naver.com</td>
-                        <td>p</td>
-                        <td>2020-09-20 09:14</td>
-                        <td>관리자</td>
-                      </tr>
+                      <c:forEach items="${memberList}" var="memberVO" varStatus="status">
+                    <tr>
+                      <td>${memberVO.user_id}</td>
+                      <td><a href="/admin/member/view?user_id=${memberVO.user_id}&page=${pageVO.page}">${memberVO.user_name}</a></td>
+                      <td>${memberVO.email}</td>
+                      <td><span class="tag tag-success">${memberVO.enabled}</span></td>
+                      
+                      <td><span class="tag tag-success">
+                      <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${memberVO.reg_date}"/>
+                      </span></td>
+                      
+                      <td><small class="badge badge-danger">${memberVO.levels}</small></td>
+                    </tr>
+                    </c:forEach>
                     </tbody>
                   </table>
                 </div>
                 <!-- /.table-responsive -->
               </div>
               <!-- /.card-body -->
-              <div class="card-footer clearfix">
-                <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">회원생성</a>
-                <div class="card-tools col-md-6 mb-3">
-                  <ul class="pagination pagination justify-content-center">
-                    <li class="page-item"><a href="" class="page-link">«</a></li>
-                    <li class="page-item"><a href="" class="page-link">1</a></li>
-                    <li class="page-item"><a href="" class="page-link">2</a></li>
-                    <li class="page-item"><a href="" class="page-link">3</a></li>
-                    <li class="page-item"><a href="" class="page-link">4</a></li>
-                    <li class="page-item"><a href="" class="page-link">5</a></li>
-                    <li class="page-item"><a href="" class="page-link">»</a></li>
-                  </ul>
-                </div>
-                
-              </div>
+              <nav aria-label="Contacts Page Navigation">
+            <ul class="pagination" style="position:relative;left:40%;">
+            <c:if test="${pageVO.prev}">
+               <li class="page-item">
+               <a class="page-link" href="/admin/member/list?page=${pageVO.startPage-1}"&searchType=${pageVO.searchType}&searchKeyword=${pageVO.searchKeyword}>이전</a>
+               </li>
+               </c:if>
+            <c:forEach begin="${pageVO.startPage}" end="${pageVO.endPage}" var="idx">
+               <li class='page-item <c:out value="${idx==pageVO.page?'active':''}"/>'><a href="/admin/member/list?page=${idx}&searchType=${pageVO.searchType}&searchKeyword=${pageVO.searchKeyword}" class="page-link">${idx}</a></li>
+            </c:forEach>
+             <c:if test="${pageVO.next}">
+               <li class="page-item">
+               <a class="page-link" href="/admin/member/list?page=${pageVO.endPage+1}"&searchType=${pageVO.searchType}&searchKeyword=${pageVO.searchKeyword}>다음</a>
+               </li>
+               </c:if>
+             </ul>
+          </nav>
               <!-- /.card-footer -->
             </div>
       </div>
