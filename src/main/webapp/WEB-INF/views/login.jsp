@@ -113,13 +113,13 @@
             margin-top: 20px;
         }
     </style>
-    <script>
-if('${msg}' != ""){
-	alert("${msg} 에 실패하였습니다");
+    
+</head>
+<script>
+if('${param.msg}' == "fail"){
+	alert('로그인에 실패했습니다');
 }
 </script>
-</head>
-
 <body>
      <!-- header 시작 -->
      <div class="header">

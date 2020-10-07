@@ -52,7 +52,26 @@ public class HomeController {
 	@Inject
 	private IF_BoardService boardService;
 	
+	/*
+	 * 게시글 추천
+	 */
+	@RequestMapping(value = "recommend_Board" , method=RequestMethod.GET)
+	public String recommendBoard(@ModelAttribute("pageVO") PageVO pageVO, @RequestParam("bno") Integer bno,Locale locale, Model model , BoardVO boardVO) throws Exception {
+		
+		boardService.recommendBoard(bno);
+		System.out.println("-------페이지"+pageVO.getPage());
+		return "redirect:trip_view?bno="+boardVO.getBno()+"&page=" + pageVO.getPage();
+	}
 	
+	/*
+	 * 게시판 글 삭제
+	 */
+	@RequestMapping(value = "board_delete" , method=RequestMethod.POST)
+	public String boardDelete(@RequestParam("bno") Integer bno, Locale locale, RedirectAttributes rdat) throws Exception {
+		boardService.deleteBoard(bno);
+		rdat.addFlashAttribute("msg", "삭제");
+		return "redirect:trip_boardlist";
+	}
 	
 	/**
 	 * 국내여행지 메인폼.

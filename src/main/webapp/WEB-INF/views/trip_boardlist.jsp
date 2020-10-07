@@ -1,7 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ page session="false"%>
 <%@ page import="java.util.regex.Matcher" %>
 <%@ page import="java.util.regex.Pattern" %>
 <%@ page import="org.edu.vo.BoardVO" %>
@@ -410,6 +409,11 @@
         }
     </style>
 </head>
+<script>
+if('${msg}' != ""){
+	alert("${msg} 에 성공하였습니다");
+}
+</script>
 <body>
     <div class="header">
         <div class="container1">
@@ -435,8 +439,25 @@
                     <li><a href="trip_boardlist">숙소후기</a></li>
                 </ul>
                 <ul class="nav_t2">
-                    <li><a href="login">로그인</a></li>
-                    <li><a href="login">마이페이지</a></li>
+                    <c:choose>
+					<c:when test="${session_enabled eq 'true' }">
+						<li>${session_username}님[${session_userid}]</li>
+						<li><a href="/logout">로그아웃</a>
+						</li>
+						<li><a href="#">마이페이지</a>
+						</li>
+						<c:if test="${session_levels eq 'ROLE_ADMIN'}">
+							<li><a href="/admin">관리자</a>
+							</li>
+						</c:if>
+					</c:when>
+					<c:otherwise>
+						<li><a href="/login">로그인</a>
+						</li>
+						<li><a href="/signUp">회원가입</a>
+						</li>
+					</c:otherwise>
+					</c:choose>
                 </ul>
             </div>
         </div>
@@ -468,8 +489,25 @@
                     <li><a href="trip_boardlist">숙소후기</a></li>
                 </ul>
                 <ul class="nav2_t2">
-                    <li><a href="login">로그인</a></li>
-                    <li><a href="login">마이페이지</a></li>
+                    <c:choose>
+					<c:when test="${session_enabled eq 'true'}">
+						<li>${session_username}님[${session_userid}]</li>
+						<li><a href="/logout">로그아웃</a>
+						</li>
+						<li><a href="#">마이페이지</a>
+						</li>
+						<c:if test="${session_levels eq 'ROLE_ADMIN'}">
+							<li><a href="/admin">관리자</a>
+							</li>
+						</c:if>
+					</c:when>
+					<c:otherwise>
+						<li><a href="/login">로그인</a>
+						</li>
+						<li><a href="/signUp">회원가입</a>
+						</li>
+					</c:otherwise>
+					</c:choose>
                 </ul>
             </div>
         </div>
@@ -860,7 +898,7 @@
                                         <td class="td4">${boardVO.writer}</td>
                                         <td class="td5"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVO.regdate}" /></td>
                                         <td class="td6">${boardVO.view_count}</td>
-                                        <td class="td7">${boardVO.view_count}</td>
+                                        <td class="td7">${boardVO.recommend}</td>
                                          </tr>
                                     </c:forEach>
                               </tbody>

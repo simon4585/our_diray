@@ -77,6 +77,10 @@ public class DataSourceTest {
       boardVO.setReply_count(0);
       boardService.insertBoard(boardVO);
    }
-   
+   @Test
+   public void recommendBoard() throws Exception{
+	  
+	  boardService.recommendBoard(57);
+   }
    
    }

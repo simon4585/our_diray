@@ -15,13 +15,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 <mapper namespace="org.edu.dao.IF_BoardDAO">
+    <!-- 게시글 추천 관련 쿼리 -->
+    <update id = "recommendBoard">
+     update tbl_board set
+     recommend = recommend + 1
+     where bno = #{bno} 
+    </update>
+    
+    <!--게시글 추가 쿼리  -->
 	<insert id="insertBoard">
 	<selectKey keyProperty="bno" resultType="int" order="BEFORE">
 			SELECT BNO_SEQ.nextval FROM DUAL
-		</selectKey>
-		insert into tbl_board (bno,title,content,writer,regdate,view_count,reply_count) 
-		values (#{bno},#{title},#{content},#{writer},sysdate,#{view_count},#{reply_count}) 
+	</selectKey>
+		insert into tbl_board (bno,title,content,writer,regdate,view_count,reply_count,recommend) 
+		values (#{bno},#{title},#{content},#{writer},sysdate,#{view_count},#{reply_count},#{recommend}) 
 	</insert>
+	
 	<select id="selectBoard" resultType="org.edu.vo.BoardVO">
 		<![CDATA[
 		SELECT T_Z.*
@@ -42,10 +51,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    T_Z.RNUM > (#{startNo}/#{perPageNum}) * #{perPageNum}
 		]]>
 		</select>
+		<!-- 게시글 수 세기 -->
 	<select id="countBno" resultType="int">
 		select count(*) from tbl_board
 		where 1 = 1
 	</select>
+	<!-- 게시글 수정 -->
 	<update id="updateBoard">
 		update tbl_board set
 		title = #{title},
@@ -54,14 +65,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update_date = sysdate,
 		view_count = #{view_count},
 		reply_count = #{reply_count}
+		recommend = #{recommend}
 		where bno = #{bno}
 	</update>
+	<!-- 게시글 삭제 -->
 	<delete id="deleteBoard">
 		delete from tbl_board where bno = #{bno}
 	</delete>
+	
+	<!-- 게시글 상세보기 -->
 	<select id="viewBoard" resultType="org.edu.vo.BoardVO">
 		select * from tbl_board where bno = #{bno}
 	</select>
+	<!-- 조회수 -->
+	<update id="updateViewCount">
+		update tbl_board set
+		view_count = view_count + 1
+		where bno = #{bno}
+	</update>
 	<!-- 공통사용 검색쿼리 -->
 	<sql id="sqlWhere">
 		<if test="searchType !=null">

@@ -34,6 +34,8 @@ public class AdminController {
 		private IF_BoardService boardService;
 		
 		
+		
+		
 		/**
 		    * 회원관리 > 등록 입니다.
 		    * @throws Exception 
@@ -53,7 +55,7 @@ public class AdminController {
 		           memberVO.setUser_pw(bcryptPassword); //DB에 들어가기전 값 set 시킴   
 		    }     memberService.insertMember(memberVO);
 		      rdat.addFlashAttribute("msg", "입력");
-		      return "redirect:/admin";
+		      return "redirect:/admin_Member";
 		   }
 		/**
 		 * 관리자 게시판리스트입니다..

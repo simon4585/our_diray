@@ -13,4 +13,6 @@ public interface IF_BoardService {
    public void deleteBoard(Integer bno) throws Exception;
    public BoardVO viewBoard(Integer bno) throws Exception;
    public int countBno(PageVO pageVO) throws Exception;
+   public void updateViewCount(Integer bno) throws Exception;
+   public void recommendBoard(Integer bno) throws Exception;
 }

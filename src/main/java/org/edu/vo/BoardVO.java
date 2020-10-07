@@ -12,8 +12,16 @@ public class BoardVO {
     private int view_count;
     private int reply_count;
     private Integer rnum; //오라클에서 생성된 rownum 행번호 필드 get,set
+    private Integer recommend; //추천수
     
     
+    
+	public Integer getRecommend() {
+		return recommend;
+	}
+	public void setRecommend(Integer recommend) {
+		this.recommend = recommend;
+	}
 	public Integer getBno() {
 		return bno;
 	}
