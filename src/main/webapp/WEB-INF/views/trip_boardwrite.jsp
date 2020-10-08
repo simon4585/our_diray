@@ -781,6 +781,9 @@
         //부트스트랩 script없이 실행 가능한 에디터
         $('#summernote').summernote({
         placeholder: 'Hello stand alone ui',
+        onImageUpload : function(files, editor, welEditable) {
+            sendFile(files[0], editor, welEditable);
+        },
         tabsize: 2,
         height: 300,
         toolbar: [
@@ -794,6 +797,22 @@
         ]       
        });
     });
+    
+    function sendFile(file, editor, welEditable) {
+        data = new FormData();
+        data.append("uploadFile", file);
+        $.ajax({
+            data : data,
+            type : "POST",
+            url : './profileImage.mpf',
+            cache : false,
+            contentType : false,
+            processData : false,
+            success : function(data) {
+                editor.insertImage(welEditable, data.url);
+            }
+        });
+    }
     </script>
 </body>
 </html>

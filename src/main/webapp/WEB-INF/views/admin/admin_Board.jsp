@@ -259,7 +259,7 @@
                      <c:forEach items="${boardList}" var="boardVO" varStatus="status">
                     <tr>
                       <td>${boardVO.rnum}</td>
-                      <td><a href="/admin/board/view?bno=${boardVO.bno}&page=${pageVO.page}">${boardVO.title}</a></td>
+                      <td><a href="/admin/admin_BoardView?bno=${boardVO.bno}&page=${pageVO.page}">${boardVO.title}</a></td>
                       <td>${boardVO.writer}</td>
                       <td><span class="tag tag-success">
                       <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVO.regdate}" />

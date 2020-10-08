@@ -985,14 +985,14 @@
                     <a href="#" class="table_btn">수정</a>
                     <a href="javascript:;" id="deleteBno" class="table_btn">삭제</a>
                     <a href="trip_boardlist" class="table_btn">목록</a>
-                  </c:when>
-                  <c:otherwise>
-                  <c:if test="${session_levels eq 'ROLE_ADMIN'}">
+                  <%-- <c:if test="${session_levels eq 'ROLE_ADMIN'}">
                     <a href="#" class="table_btn">수정</a>
                     <a href="javascript:;" id="deleteBno" class="table_btn">삭제</a>
                     <a href="trip_boardlist" class="table_btn">목록</a>      
-                  </c:if>
-                       
+                  </c:if> --%>
+                  </c:when>
+                  <c:otherwise>
+                     <a href="trip_boardlist" class="table_btn">목록</a>   
                   </c:otherwise>
                   </c:choose>
                         
@@ -1151,6 +1151,7 @@
 	   $(document).ready(function(){
 		 $("#recommendBno").bind("click",function(){
 			if(confirm("해당 글을 추천하시겠습니까?")){
+				
 				var formObj = $("#recommendForm");
 				formObj.attr("action" , "/recommend_Board");
 				formObj.attr("method", "get");

@@ -264,7 +264,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <c:forEach items="${memberList}" var="memberVO" varStatus="status">
                     <tr>
                       <td>${memberVO.user_id}</td>
-                      <td><a href="/admin/member/view?user_id=${memberVO.user_id}&page=${pageVO.page}">${memberVO.user_name}</a></td>
+                      <td><a href="/admin/admin_MemberView?user_id=${memberVO.user_id}&page=${pageVO.page}">${memberVO.user_name}</a></td>
                       <td>${memberVO.email}</td>
                       <td><span class="tag tag-success">${memberVO.enabled}</span></td>
                       

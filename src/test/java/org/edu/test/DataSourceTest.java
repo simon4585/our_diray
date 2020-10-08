@@ -8,6 +8,7 @@ import javax.sql.DataSource;
 
 import org.edu.service.IF_BoardService;
 import org.edu.service.IF_MemberService;
+import org.edu.vo.BoardTypeVO;
 import org.edu.vo.BoardVO;
 import org.edu.vo.MemberVO;
 import org.junit.Test;
@@ -36,6 +37,11 @@ public class DataSourceTest {
       Connection con = ds.getConnection();
       System.out.println("데이터베이스 커넥션 성공 : " + con);
    }
+   @Test
+   public void testViewMember() throws Exception {
+      memberService.viewMember("user");
+   }
+   
    @Test
    public void testDeleteMember() throws Exception {
       memberService.deleteMember("user02");
@@ -71,8 +77,8 @@ public class DataSourceTest {
       BoardVO boardVO = new BoardVO();
       boardVO.setBno(5);
       boardVO.setTitle("위대한 여정");
-      boardVO.setContent("발걸음");
-      boardVO.setWriter("우정호");
+      boardVO.setContent("첫 발걸음");
+      boardVO.setWriter("백시몬");
       boardVO.setView_count(0);
       boardVO.setReply_count(0);
       boardService.insertBoard(boardVO);
@@ -83,4 +89,13 @@ public class DataSourceTest {
 	  boardService.recommendBoard(57);
    }
    
+   @Test
+   public void insertBoardType() throws Exception {
+	   BoardTypeVO boardTypeVO = new BoardTypeVO();
+	   boardTypeVO.setBod_type("먹거리2");
+	   boardTypeVO.setBod_name("해외 먹거리");
+	   boardTypeVO.setBod_sun(1);
+	   //System.out.println(boardTypeVO.toString());
+	   boardService.insertBoardType(boardTypeVO);
    }
+}

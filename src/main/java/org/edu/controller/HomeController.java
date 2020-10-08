@@ -59,7 +59,6 @@ public class HomeController {
 	public String recommendBoard(@ModelAttribute("pageVO") PageVO pageVO, @RequestParam("bno") Integer bno,Locale locale, Model model , BoardVO boardVO) throws Exception {
 		
 		boardService.recommendBoard(bno);
-		System.out.println("-------페이지"+pageVO.getPage());
 		return "redirect:trip_view?bno="+boardVO.getBno()+"&page=" + pageVO.getPage();
 	}
 	

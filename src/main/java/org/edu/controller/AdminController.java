@@ -1,5 +1,6 @@
 package org.edu.controller;
 
+import java.io.File;
 import java.util.List;
 import java.util.Locale;
 
@@ -19,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/admin")
@@ -33,11 +35,32 @@ public class AdminController {
 		@Inject
 		private IF_BoardService boardService;
 		
+		/**
+		    * 관리자 회원관리 > 삭제 입니다.
+		    * @throws Exception 
+		    */
+		   @RequestMapping(value = "/member_delete", method = RequestMethod.POST)
+		   public String memberDelete(@RequestParam("user_id") String user_id, Locale locale,RedirectAttributes rdat) throws Exception {
+		      memberService.deleteMember(user_id);
+		      rdat.addFlashAttribute("msg","삭제");
+		      return "redirect:/admin/admin_Member";
+		   }
 		
+		/**
+		    * 관리자 회원관리 상세보기 입니다.
+		    * @throws Exception 
+		    */
+		   @RequestMapping(value = "/admin_MemberView", method = RequestMethod.GET)
+		   public String memberView(@ModelAttribute("pageVO") PageVO pageVO,@RequestParam("user_id") String user_id, Locale locale, Model model) throws Exception {
+		      MemberVO memberVO = memberService.viewMember(user_id);
+		      model.addAttribute("pageVO",pageVO);
+		      model.addAttribute("memberVO", memberVO);
+		      return "admin/admin_MemberView";
+		   }
 		
 		
 		/**
-		    * 회원관리 > 등록 입니다.
+		    *관리자 회원관리 > 등록 입니다.
 		    * @throws Exception 
 		    */
 		   @RequestMapping(value = "/admin_MemberWrite", method = RequestMethod.GET)
@@ -55,8 +78,32 @@ public class AdminController {
 		           memberVO.setUser_pw(bcryptPassword); //DB에 들어가기전 값 set 시킴   
 		    }     memberService.insertMember(memberVO);
 		      rdat.addFlashAttribute("msg", "입력");
-		      return "redirect:/admin_Member";
+		      return "redirect:/admin/admin_Member";
 		   }
+		   
+		   /**
+		    * 게시물관리 상세보기 입니다.
+		    * @throws Exception 
+		    */
+		   @RequestMapping(value = "/admin_BoardView", method = RequestMethod.GET)
+		      public String boardView(@ModelAttribute("pageVO") PageVO pageVO,@RequestParam("bno") Integer bno,Locale locale, Model model) throws Exception {
+		         BoardVO boardVO = boardService.viewBoard(bno);
+		         model.addAttribute("boardVO", boardVO);
+		         model.addAttribute("PageVO", pageVO);
+		         return "admin/admin_BoardView";}
+		   
+		   
+		   /**
+		    * 게시물관리 > 삭제 입니다.
+		    * @throws Exception 
+		    */
+		   @RequestMapping(value = "/board_delete", method = RequestMethod.POST)
+		   public String boardDelete(@RequestParam("bno") Integer bno, Locale locale,RedirectAttributes rdat) throws Exception {   
+		    boardService.deleteBoard(bno);
+		    rdat.addFlashAttribute("msg", "삭제");
+		    return "redirect:/admin/admin_Board";
+		   }
+		   
 		/**
 		 * 관리자 게시판리스트입니다..
 		 * @throws Exception 

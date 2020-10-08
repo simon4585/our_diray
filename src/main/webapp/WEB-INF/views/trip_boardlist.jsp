@@ -536,7 +536,7 @@ if('${msg}' != ""){
                 <div class="search">
                     <form action="trip_boardlist">
                     <img src="/resources/img/search.png" width="30" height="30" onclick="alert('아직 검색하실 수 업습니다.');">
-                    <input type="search" placeholder="　검색어를 입력해주세요">
+                    <input type="search" name="searchKeyword" placeholder="　검색어를 입력해주세요">
                     </form>
                 </div>
             </div>
@@ -893,7 +893,7 @@ if('${msg}' != ""){
                                    
                                     <tr>
                                         <td class="td1">${boardVO.bno}</td>
-                                        <td class="td2"><%=imgTag%></td>
+                                        <td class="td2"><%-- <%=imgTag%> --%><img src="/resources/img/f_list1.jpg"></td>
                                         <td class="td3"><a href="/trip_view?bno=${boardVO.bno}&page=${pageVO.page}">${boardVO.title}</a></td>
                                         <td class="td4">${boardVO.writer}</td>
                                         <td class="td5"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVO.regdate}" /></td>

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.edu.dao.IF_BoardDAO;
+import org.edu.vo.BoardTypeVO;
 import org.edu.vo.BoardVO;
 import org.edu.vo.PageVO;
 import org.springframework.stereotype.Service;
@@ -61,6 +62,35 @@ public class BoardServiceImpl implements IF_BoardService{
 	public void recommendBoard(Integer bno) throws Exception {
 		boardDAO.recommendBoard(bno);
 		
+	}
+
+	@Override
+	public BoardTypeVO viewBoardType(String bod_type) throws Exception {
+		
+		return boardDAO.viewBoardType(bod_type);
+	}
+
+	@Override
+	public void deleteBoardType(String bod_type) throws Exception {
+		boardDAO.deleteBoardType(bod_type);
+		
+	}
+
+	@Override
+	public void updateBoardType(BoardTypeVO boardTypeVO) throws Exception {
+		boardDAO.updateBoardType(boardTypeVO);
+		
+	}
+
+	@Override
+	public void insertBoardType(BoardTypeVO boardTypeVO) throws Exception {
+		boardDAO.insertBoardType(boardTypeVO);
+		
+	}
+
+	@Override
+	public List<BoardTypeVO> selectBoardType() throws Exception {
+		return boardDAO.selectBoardType();
 	}
    
   
