@@ -4,11 +4,10 @@ public class BoardTypeVO {
     private String bod_type;
     private String bod_name;
     private Integer bod_sun;
-    
-    
+ 
 	@Override
 	public String toString() {
-		return "여기까지 [bod_type=" + bod_type + ", bod_name=" + bod_name + ", bod_sun=" + bod_sun + "]";
+		return "BoardTypeVO [bod_type=" + bod_type + ", bod_name=" + bod_name + ", bod_sun=" + bod_sun + "]";
 	}
 	public String getBod_type() {
 		return bod_type;

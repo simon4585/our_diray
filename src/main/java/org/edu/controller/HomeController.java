@@ -110,14 +110,27 @@ public class HomeController {
 	 */
 	   @RequestMapping(value = "trip_boardlist", method = RequestMethod.GET)
 	   public String trip_boardlist(@ModelAttribute("pageVO") PageVO pageVO , Locale locale, Model model, HttpServletRequest request) throws Exception {
-		     if(pageVO.getPage() == null) { //초기 page변수값 지정
-		        pageVO.setPage(1);
-		     } 
-		      pageVO.setPerPageNum(10); //1페이지당 보여줄 게시물 수 강제지정 
-		      pageVO.setTotalCount(boardService.countBno(pageVO)); //강제로 입력한 값을 쿼리로 대체OK.
-		      List<BoardVO> list = boardService.selectBoard(pageVO);
-		      	 model.addAttribute("boardList", list);
-		      model.addAttribute("pageVO", pageVO);
+		 //초기 메뉴를 클릭시 /admin/board/list?searchBoard=notice 데이터전송
+			HttpSession session = request.getSession();
+			if(pageVO.getSearchBoard() != null) {
+				//최초 세션 만들어짐
+				session.setAttribute("session_bod_type", pageVO.getSearchBoard());
+			} else {
+				//일반링크 클릭시 /admin/board/view?page=2...
+				//만들어진 세션 사용(아래)
+				pageVO.setSearchBoard((String) session.getAttribute("session_bod_type"));
+			}
+			//PageVO pageVO = new PageVO();//매개변수로 받기전 테스트용
+			if(pageVO.getPage() == null) {
+				pageVO.setPage(1);//초기 page변수값 지정
+			}
+			pageVO.setPerPageNum(10);//1페이지당 보여줄 게시물 수 강제지정
+			pageVO.setTotalCount(boardService.countBno(pageVO));//강제로 입력한 값을 쿼리로 대체OK.
+			List<BoardVO> list = boardService.selectBoard(pageVO);
+			//모델클래스로 jsp화면으로 boardService에서 셀렉트한 list값을 boardList변수명으로 보낸다.
+			//model { list -> boardList -> jsp }
+			model.addAttribute("boardList", list);
+			model.addAttribute("pageVO", pageVO);
 		      	
 	      return "trip_boardlist";
 }

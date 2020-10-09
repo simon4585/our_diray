@@ -55,6 +55,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="countBno" resultType="int">
 		select count(*) from tbl_board
 		where 1 = 1
+	<include refid="sqlWhere"></include>
 	</select>
 	<!-- 게시글 수정 -->
 	<update id="updateBoard">
@@ -99,6 +100,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			bod_type = #{searchBoard}
 			)
 		</if>
+		<if test="searchBoard_type !=null and !searchBoard_type.equals('')">
+	        AND(
+	        bod_name = #{searchBoard_type}
+	        )	
+	    </if>
 	</sql>
 	<!-- 게시판 생성(아래) -->
 	<select id ="viewBoardType" resultType="org.edu.vo.BoardTypeVO">
@@ -112,11 +118,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	<update id="updateBoardType">
 	update tbl_board_type set
-	bod_name = #{bod_name},
-	bod_sun = #{bod_sun}
-	where bod_type = #{bod_type}
+	bod_type = #{bod_type},
+	bod_sun = #{bod_sun},
+	where bod_name = #{bod_name},
 	</update>
 	<delete id="deleteBoardType">
-	delete from tbl_board_type where bod_type = #{bod_type}
+	delete from tbl_board_type where bod_name = #{bod_name}
 	</delete>
 </mapper>

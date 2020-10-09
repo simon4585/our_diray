@@ -13,7 +13,6 @@ public class MemberVO {
 	private String levels;
 	private Date reg_date;
 	
-	
 	public String getUser_id() {
 		return user_id;
 	}

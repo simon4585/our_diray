@@ -14,7 +14,7 @@
 <mapper namespace="org.edu.dao.IF_MemberDAO">
 
 <insert id="insertMember">
-		insert into tbl_member (user_id,user_pw,user_name,email,point,enabled,levels,reg_date) 
+		insert into tbl_member (user_id,user_pw,user_name,email,point,enabled,levels,reg_datez) 
 		values (#{user_id},#{user_pw},#{user_name},#{email},#{point},#{enabled},#{levels},sysdate) 
 	</insert>
 <update id="updateMember">

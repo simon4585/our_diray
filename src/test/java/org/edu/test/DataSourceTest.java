@@ -63,9 +63,9 @@ public class DataSourceTest {
    @Test
    public void testInsertMember() throws Exception {
       MemberVO memberVO = new MemberVO();
-      memberVO.setUser_id("admin");
+      memberVO.setUser_id("qortlahs");
       memberVO.setUser_pw("1234");
-      memberVO.setUser_name("시몬");
+      memberVO.setUser_name("시몬님");
       memberVO.setEmail("simon@test.com");
       memberVO.setPoint(100);
       memberVO.setEnabled(true);

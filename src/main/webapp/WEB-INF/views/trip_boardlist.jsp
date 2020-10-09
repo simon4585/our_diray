@@ -549,288 +549,82 @@ if('${msg}' != ""){
                     <a href="login"><p class="login_bg">로그인</p></a>
                     <p class="login_bg2"><a href="#">회원가입</a>　/　<a href="#">ID/PW 찾기</a></p>
                 </div>
+                
                 <div class="left_nav">
+                    <a href="trip_boardlist?searchBoard=먹거리">
                     <div class="nav_title1">
                         <h1>먹거리
                             <img src="/resources/img/food.png" alt="음식" width="30" height="20">
                         </h1>
                     </div>
+                    </a>
+                    <a href="trip_boardlist?searchBoard=먹거리&searchBoard_type=국내먹거리">
                     <div class="korea_foodnav">
                         <h2 >국내 먹거리
                             <img src="/resources/img/hamburger.png" alt="햄버거" width="20" height="20">
                         </h2>
                         <hr>
-                        <div class="ko_fdnav_1">
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">전체</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">서울</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">경기도</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">강원도</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">충남</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">충북</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">경남</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">경북</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">전남</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">전북</h3>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
+                       </div>
+                       </a>
+                    <a href="trip_boardlist?searchBoard=먹거리&searchBoard_type=해외먹거리">
                     <div class="overseas_foodnav">
                         <h2>해외 먹거리
                             <img src="/resources/img/hamburger.png" alt="햄버거" width="20" height="20">
                         </h2>
                         <hr>
-                        <div class="se_fdnav_1">
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">전체</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">아시아</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">유럽</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">북미</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">남태평양</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">중동</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">아프리카</h3>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
+                     </div></a>
+                     
+                    <a href="trip_boardlist?searchBoard=여행지">
                     <div class="nav_title2">
                         <h1>여행지
                             <img src="/resources/img/trip.png" alt="여행" width="30" height="20">
                         </h1>
                     </div>
+                    </a>
+                    
+                    <a href="trip_boardlist?searchBoard=여행지&searchBoard_type=국내여행지">
                     <div class="korea_tripnav">
                         <h2 >국내 여행지
                             <img src="/resources/img/hamburger.png" alt="햄버거" width="20" height="20">
                         </h2>
                         <hr>
-                        <div class="ko_trnav_1">
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">전체</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">서울</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">경기도</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">강원도</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">충남</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">충북</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">경남</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">경북</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">전남</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">전북</h3>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
-
+                    </a>
+                    
+                    <a href="trip_boardlist?searchBoard=여행지&searchBoard_type=해외여행지">
                     <div class="overseas_tripnav">
                         <h2>해외 여행지
                             <img src="/resources/img/hamburger.png" alt="햄버거" width="20" height="20">
                         </h2>
                         <hr>
-                        <div class="se_trnav_1">
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">전체</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">아시아</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">유럽</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">북미</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">남태평양</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">중동</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">아프리카</h3>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
+                    </a>
                     
+                    <a href="trip_boardlist?searchBoard=숙소">
                     <div class="nav_title3">
                         <h1>숙소
                             <img src="/resources/img/accommondation.png" alt="숙소" width="30" height="20">
                         </h1>
                     </div>
+                    </a>
+                    
+                    <a href="trip_boardlist?searchBoard=숙소&searchBoard_type=구경하기">
                     <div class="accommodation_view">
                         <h2>구경하기
                             <img src="/resources/img/hamburger.png" alt="햄버거" width="20" height="20">
                         </h2>
                         <hr>
-                        <div class="ac_viewnav_1">
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">전체</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">국내</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">해외</h3>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
+                     </div>
+                     </a>
+                    
+                    <a href="trip_boardlist?searchBoard=숙소&searchBoard_type=숙소후기">
                     <div class="accommodation_comment">
                         <h2>숙소후기
                             <img src="/resources/img/hamburger.png" alt="햄버거" width="20" height="20">
                         </h2>
                         <hr>
-                        <div class="ac_commentnav_1">
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">전체</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">국내</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <h3><img src="/resources/img/text.png" width="20" height="10">해외</h3>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
+                     </div>
+                    </a>
                     <br>
                     <br>
                     <hr>

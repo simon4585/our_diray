@@ -13,10 +13,16 @@ public class BoardVO {
     private int reply_count;
     private Integer rnum; //오라클에서 생성된 rownum 행번호 필드 get,set
     private Integer recommend; //추천수
+    //카테고리
     private String bod_type; 
-    
-    
-    
+    private String bod_name;
+   
+    public String getBod_name() {
+		return bod_name;
+	}
+	public void setBod_name(String bod_name) {
+		this.bod_name = bod_name;
+	}
 	public String getBod_type() {
 		return bod_type;
 	}
