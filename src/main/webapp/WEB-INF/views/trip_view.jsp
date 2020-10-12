@@ -544,16 +544,24 @@
                     <li>숙소</li>
                 </ul>
                 <ul class="fade_nav1 fade_common">
-                    <li><a href="trip_boardlist">국내 먹거리</a></li>
-                    <li><a href="trip_boardlist">해외 먹거리</a></li>
+                <c:forEach items="${boardTypeMenu}" var="boardTypeMenu" begin="0" end="1">
+                <a href="/trip_boardlist?searchBoard=${boardTypeMenu.bod_type}&searchBoard_type=${boardTypeMenu.bod_name}">
+                <li>${boardTypeMenu.bod_name}</li></a>
+                </c:forEach>
+                    <!-- <li><a href="trip_boardlist">국내 먹거리</a></li>
+                    <li><a href="trip_boardlist">해외 먹거리</a></li> -->
                 </ul>
                 <ul class="fade_nav2 fade_common">
-                    <li><a href="trip_boardlist">국내 여행지</a></li>
-                    <li><a href="trip_boardlist">해외 여행지</a></li>
+                 <c:forEach items="${boardTypeMenu}" var="boardTypeMenu" begin="2" end="3">
+                 <a href="/trip_boardlist?searchBoard=${boardTypeMenu.bod_type}&searchBoard_type=${boardTypeMenu.bod_name}">
+                 <li>${boardTypeMenu.bod_name}</li></a>
+                 </c:forEach>
                 </ul>
                 <ul class="fade_nav3 fade_common">
-                    <li><a href="trip_boardlist">구경하기</a></li>
-                    <li><a href="trip_boardlist">숙소후기</a></li>
+                 <c:forEach items="${boardTypeMenu}" var="boardTypeMenu" begin="4" end="5">
+                 <a href="/trip_boardlist?searchBoard=${boardTypeMenu.bod_type}&searchBoard_type=${boardTypeMenu.bod_name}">
+                 <li>${boardTypeMenu.bod_name}</li></a>
+                 </c:forEach>
                 </ul>
                 <ul class="nav_t2">
                     <c:choose>
@@ -649,11 +657,24 @@
 
             <!--왼쪽 네비게이션 시작-->
             <div class="board_nav">
+                <c:choose>
+            <c:when test="${session_enabled eq 'true'}">
+            <div class="small_login">
+                    <p>아이디 : ${session_userid}</p>
+                    <p>닉네임 : ${session_username}</p>
+                    <p>포인트 : ${session_point}</p>
+                    <a href="login.html"><p class="login_bg">마이페이지</p></a>
+            </div>
+            </c:when>
+            <c:otherwise>
+            
                 <div class="small_login">
                     <p>더 많은 활동을 하시려면<br>로그인을 해주세요</p>
                     <a href="login"><p class="login_bg">로그인</p></a>
                     <p class="login_bg2"><a href="#">회원가입</a>　/　<a href="#">ID/PW 찾기</a></p>
                 </div>
+             </c:otherwise>
+             </c:choose>
                 <div class="left_nav">
                     <div class="nav_title1">
                         <h1>먹거리

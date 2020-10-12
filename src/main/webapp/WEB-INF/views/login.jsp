@@ -129,21 +129,29 @@ if('${param.msg}' == "fail"){
             </div>
             <div class="nav">
                 <ul class="nav_t1">
-                    <li>먹거리</li>
-                    <li>여행지</li>
-                    <li>숙소</li>
+                    <a href="trip_boardlist?searchBoard=먹거리"><li>먹거리</li></a>
+                    <a href="trip_boardlist?searchBoard=여행지"><li>여행지</li></a>
+                    <a href="trip_boardlist?searchBoard=숙소"><li>숙소</li></a>
                 </ul>
                 <ul class="fade_nav1 fade_common">
-                    <li><a href="trip_boardlist">국내 먹거리</a></li>
-                    <li><a href="trip_boardlist">해외 먹거리</a></li>
+                <c:forEach items="${boardTypeMenu}" var="boardTypeMenu" begin="0" end="1">
+                <a href="/trip_boardlist?searchBoard=${boardTypeMenu.bod_type}&searchBoard_type=${boardTypeMenu.bod_name}">
+                <li>${boardTypeMenu.bod_name}</li></a>
+                </c:forEach>
+                    <!-- <li><a href="trip_boardlist">국내 먹거리</a></li>
+                    <li><a href="trip_boardlist">해외 먹거리</a></li> -->
                 </ul>
                 <ul class="fade_nav2 fade_common">
-                    <li><a href="trip_boardlist">국내 여행지</a></li>
-                    <li><a href="trip_boardlist">해외 여행지</a></li>
+                 <c:forEach items="${boardTypeMenu}" var="boardTypeMenu" begin="2" end="3">
+                 <a href="/trip_boardlist?searchBoard=${boardTypeMenu.bod_type}&searchBoard_type=${boardTypeMenu.bod_name}">
+                 <li>${boardTypeMenu.bod_name}</li></a>
+                 </c:forEach>
                 </ul>
                 <ul class="fade_nav3 fade_common">
-                    <li><a href="trip_boardlist">구경하기</a></li>
-                    <li><a href="trip_boardlist">숙소후기</a></li>
+                 <c:forEach items="${boardTypeMenu}" var="boardTypeMenu" begin="4" end="5">
+                 <a href="/trip_boardlist?searchBoard=${boardTypeMenu.bod_type}&searchBoard_type=${boardTypeMenu.bod_name}">
+                 <li>${boardTypeMenu.bod_name}</li></a>
+                 </c:forEach>
                 </ul>
                 <ul class="nav_t2">
                     <li><a href="login">로그인</a></li>

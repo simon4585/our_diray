@@ -202,6 +202,7 @@ public class HomeController {
 		         if(authorities.stream().filter(o -> o.getAuthority().equals("ROLE_ADMIN")).findAny().isPresent())
 		         {levels = "ROLE_ADMIN";}
 		         userid =((UserDetails)principal).getUsername();
+		         //userid =((UserDetails)principal).getpoint();
 		         //로그인 세션 저장
 		         session.setAttribute("session_enabled", enabled);//인증확인
 		         session.setAttribute("session_userid", userid);//사용자아이디
@@ -210,6 +211,8 @@ public class HomeController {
 		         //=========== 하단은 우리가 추가한는 세션 변수처리
 		         //회원이름 구하기 추가
 		         MemberVO memberVO = memberService.viewMember(userid);
+		         
+		         //session.setAttribute("session_point", memberVO.getPoint()); //포인트
 		         session.setAttribute("session_username", memberVO.getUser_name());//사용자명
 		           }
 		      System.out.println("------------------세션 값 출력: " + enabled);

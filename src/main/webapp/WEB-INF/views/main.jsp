@@ -613,16 +613,24 @@ if('${msg}' != ""){
                     <li>숙소</li>
                 </ul>
                 <ul class="fade_nav1 fade_common">
-                    <li><a href="trip_boardlist">국내 먹거리</a></li>
-                    <li><a href="trip_boardlist">해외 먹거리</a></li>
+                <c:forEach items="${boardTypeMenu}" var="boardTypeMenu" begin="0" end="1">
+                <a href="/trip_boardlist?searchBoard=${boardTypeMenu.bod_type}&searchBoard_type=${boardTypeMenu.bod_name}">
+                <li>${boardTypeMenu.bod_name}</li></a>
+                </c:forEach>
+                    <!-- <li><a href="trip_boardlist">국내 먹거리</a></li>
+                    <li><a href="trip_boardlist">해외 먹거리</a></li> -->
                 </ul>
                 <ul class="fade_nav2 fade_common">
-                    <li><a href="trip_boardlist">국내 여행지</a></li>
-                    <li><a href="trip_boardlist">해외 여행지</a></li>
+                 <c:forEach items="${boardTypeMenu}" var="boardTypeMenu" begin="2" end="3">
+                 <a href="/trip_boardlist?searchBoard=${boardTypeMenu.bod_type}&searchBoard_type=${boardTypeMenu.bod_name}">
+                 <li>${boardTypeMenu.bod_name}</li></a>
+                 </c:forEach>
                 </ul>
                 <ul class="fade_nav3 fade_common">
-                    <li><a href="trip_boardlist">구경하기</a></li>
-                    <li><a href="trip_boardlist">숙소후기</a></li>
+                 <c:forEach items="${boardTypeMenu}" var="boardTypeMenu" begin="4" end="5">
+                 <a href="/trip_boardlist?searchBoard=${boardTypeMenu.bod_type}&searchBoard_type=${boardTypeMenu.bod_name}">
+                 <li>${boardTypeMenu.bod_name}</li></a>
+                 </c:forEach>
                 </ul>
                 <ul class="nav_t2">
                     <c:choose>

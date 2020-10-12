@@ -427,16 +427,24 @@ if('${msg}' != ""){
                     <li>숙소</li>
                 </ul>
                 <ul class="fade_nav1 fade_common">
-                    <li><a href="trip_boardlist">국내 먹거리</a></li>
-                    <li><a href="trip_boardlist">해외 먹거리</a></li>
+                <c:forEach items="${boardTypeMenu}" var="boardTypeMenu" begin="0" end="1">
+                <a href="/trip_boardlist?searchBoard=${boardTypeMenu.bod_type}&searchBoard_type=${boardTypeMenu.bod_name}">
+                <li>${boardTypeMenu.bod_name}</li></a>
+                </c:forEach>
+                    <!-- <li><a href="trip_boardlist">국내 먹거리</a></li>
+                    <li><a href="trip_boardlist">해외 먹거리</a></li> -->
                 </ul>
                 <ul class="fade_nav2 fade_common">
-                    <li><a href="trip_boardlist">국내 여행지</a></li>
-                    <li><a href="trip_boardlist">해외 여행지</a></li>
+                 <c:forEach items="${boardTypeMenu}" var="boardTypeMenu" begin="2" end="3">
+                 <a href="/trip_boardlist?searchBoard=${boardTypeMenu.bod_type}&searchBoard_type=${boardTypeMenu.bod_name}">
+                 <li>${boardTypeMenu.bod_name}</li></a>
+                 </c:forEach>
                 </ul>
                 <ul class="fade_nav3 fade_common">
-                    <li><a href="trip_boardlist">구경하기</a></li>
-                    <li><a href="trip_boardlist">숙소후기</a></li>
+                 <c:forEach items="${boardTypeMenu}" var="boardTypeMenu" begin="4" end="5">
+                 <a href="/trip_boardlist?searchBoard=${boardTypeMenu.bod_type}&searchBoard_type=${boardTypeMenu.bod_name}">
+                 <li>${boardTypeMenu.bod_name}</li></a>
+                 </c:forEach>
                 </ul>
                 <ul class="nav_t2">
                     <c:choose>
@@ -522,33 +530,50 @@ if('${msg}' != ""){
             <div class="top_content_img" style="float: left;">
                 <img src="/resources/img/logo2.png" alt="로고">
             </div>
+            
+            <form action="trip_boardlist">
             <div class="top_content">
                 <div>
-                    <h3>먹거리 &#60;</h3>
+                    <h3>${session_bod_type} &#60;</h3>
                 </div>
                 <div>
-                    <select>
-                        <option value="" selected>전체</option>
-                        <option value="">국내</option>
-                        <option value="">해외</option>
+                    <select name="searchBoard_type">
+                        <option value=""selected>게시판 선택</option>
+                        <c:forEach items="${boardTypeMenu}" var="boardTypeMenu">
+                        <option value="${boardTypeMenu.bod_name}">${boardTypeMenu.bod_name}</option>
+                        </c:forEach>
                     </select>
                 </div>
                 <div class="search">
-                    <form action="trip_boardlist">
-                    <img src="/resources/img/search.png" width="30" height="30" onclick="alert('아직 검색하실 수 업습니다.');">
+                    <img src="/resources/img/search.png" width="30" height="30">
+                    <input type ="hidden" name="searchType">
                     <input type="search" name="searchKeyword" placeholder="　검색어를 입력해주세요">
-                    </form>
-                </div>
+                    
+                 </div>
             </div>
+            </form>
             <!--top 컨텐츠 네비 끝-->
 
             <!--왼쪽 네비게이션 시작-->
             <div class="board_nav">
+            <c:choose>
+            <c:when test="${session_enabled eq 'true'}">
+            <div class="small_login">
+                    <p>아이디 : ${session_userid}</p>
+                    <p>닉네임 : ${session_username}</p>
+                    <p>포인트 : ${session_point}</p>
+                    <a href="login.html"><p class="login_bg">마이페이지</p></a>
+            </div>
+            </c:when>
+            <c:otherwise>
+            
                 <div class="small_login">
                     <p>더 많은 활동을 하시려면<br>로그인을 해주세요</p>
                     <a href="login"><p class="login_bg">로그인</p></a>
                     <p class="login_bg2"><a href="#">회원가입</a>　/　<a href="#">ID/PW 찾기</a></p>
                 </div>
+             </c:otherwise>
+             </c:choose>
                 
                 <div class="left_nav">
                     <a href="trip_boardlist?searchBoard=먹거리">
@@ -558,21 +583,17 @@ if('${msg}' != ""){
                         </h1>
                     </div>
                     </a>
-                    <a href="trip_boardlist?searchBoard=먹거리&searchBoard_type=국내먹거리">
+                    <c:forEach items="${boardTypeMenu}" var="boardTypeMenu" begin="0" end="1">
+                    <a href="/trip_boardlist?searchBoard=${boardTypeMenu.bod_type}&searchBoard_type=${boardTypeMenu.bod_name}">
                     <div class="korea_foodnav">
-                        <h2 >국내 먹거리
+                        <h2 >${boardTypeMenu.bod_name}
                             <img src="/resources/img/hamburger.png" alt="햄버거" width="20" height="20">
                         </h2>
                         <hr>
                        </div>
                        </a>
-                    <a href="trip_boardlist?searchBoard=먹거리&searchBoard_type=해외먹거리">
-                    <div class="overseas_foodnav">
-                        <h2>해외 먹거리
-                            <img src="/resources/img/hamburger.png" alt="햄버거" width="20" height="20">
-                        </h2>
-                        <hr>
-                     </div></a>
+                    </c:forEach>
+
                      
                     <a href="trip_boardlist?searchBoard=여행지">
                     <div class="nav_title2">
@@ -582,23 +603,18 @@ if('${msg}' != ""){
                     </div>
                     </a>
                     
-                    <a href="trip_boardlist?searchBoard=여행지&searchBoard_type=국내여행지">
+                    <c:forEach items="${boardTypeMenu}" var="boardTypeMenu" begin="2" end="3">
+                    <a href="/trip_boardlist?searchBoard=${boardTypeMenu.bod_type}&searchBoard_type=${boardTypeMenu.bod_name}">
                     <div class="korea_tripnav">
-                        <h2 >국내 여행지
+                        <h2 >${boardTypeMenu.bod_name}
                             <img src="/resources/img/hamburger.png" alt="햄버거" width="20" height="20">
                         </h2>
                         <hr>
                     </div>
                     </a>
+                    </c:forEach>
                     
-                    <a href="trip_boardlist?searchBoard=여행지&searchBoard_type=해외여행지">
-                    <div class="overseas_tripnav">
-                        <h2>해외 여행지
-                            <img src="/resources/img/hamburger.png" alt="햄버거" width="20" height="20">
-                        </h2>
-                        <hr>
-                    </div>
-                    </a>
+      
                     
                     <a href="trip_boardlist?searchBoard=숙소">
                     <div class="nav_title3">
@@ -608,23 +624,16 @@ if('${msg}' != ""){
                     </div>
                     </a>
                     
-                    <a href="trip_boardlist?searchBoard=숙소&searchBoard_type=구경하기">
+                    <c:forEach items="${boardTypeMenu}" var="boardTypeMenu" begin="4" end="5">
+                    <a href="/trip_boardlist?searchBoard=${boardTypeMenu.bod_type}&searchBoard_type=${boardTypeMenu.bod_name}">
                     <div class="accommodation_view">
-                        <h2>구경하기
+                        <h2>${boardTypeMenu.bod_name}
                             <img src="/resources/img/hamburger.png" alt="햄버거" width="20" height="20">
                         </h2>
                         <hr>
                      </div>
                      </a>
-                    
-                    <a href="trip_boardlist?searchBoard=숙소&searchBoard_type=숙소후기">
-                    <div class="accommodation_comment">
-                        <h2>숙소후기
-                            <img src="/resources/img/hamburger.png" alt="햄버거" width="20" height="20">
-                        </h2>
-                        <hr>
-                     </div>
-                    </a>
+                     </c:forEach>
                     <br>
                     <br>
                     <hr>
