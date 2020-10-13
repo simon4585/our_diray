@@ -1006,11 +1006,11 @@
                     <a href="#" class="table_btn">수정</a>
                     <a href="javascript:;" id="deleteBno" class="table_btn">삭제</a>
                     <a href="trip_boardlist" class="table_btn">목록</a>
-                  <%-- <c:if test="${session_levels eq 'ROLE_ADMIN'}">
+                  </c:when>
+                  <c:when test="${session_levels eq 'ROLE_ADMIN'}">
                     <a href="#" class="table_btn">수정</a>
                     <a href="javascript:;" id="deleteBno" class="table_btn">삭제</a>
                     <a href="trip_boardlist" class="table_btn">목록</a>      
-                  </c:if> --%>
                   </c:when>
                   <c:otherwise>
                      <a href="trip_boardlist" class="table_btn">목록</a>   

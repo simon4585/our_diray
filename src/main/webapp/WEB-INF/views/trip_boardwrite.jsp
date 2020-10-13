@@ -783,22 +783,20 @@
 	                 
 	              <select name="bod_name">
 	                <c:choose>
-	                     <c:when test="${session_bod_type eq '먹거리' }">
-	                       <option value="국내먹거리">국내먹거리</option>
-	                       <option value="해외먹거리">해외먹거리</option>
-	                       
-	                         <c:if test="${session_bod_type eq '여행지'}">
-	                          <option value="국내여행지">국내여행지</option>
-	                          <option value="해외여행지">해외여행지</option>
-	                         </c:if>
-	                     </c:when>
-	                     
+	                   <c:when test="${session_bod_type eq '먹거리' }">
+	                        <option value="국내먹거리">국내먹거리</option>
+	                        <option value="해외먹거리">해외먹거리</option>
+	                   </c:when>
+	                   <c:when test="${session_bod_type eq '여행지' }">
+	                        <option value="국내여행지">국내여행지</option>
+	                        <option value="해외여행지">해외여행지</option>
+	                   </c:when>
 	                   <c:otherwise>
-	                    <option value="구경하기">구경하기</option>
-	                    <option value="숙소후기">숙소후기</option>
+	                        <option value="구경하기">구경하기</option>
+	                        <option value="숙소후기">숙소후기</option>
 	                   </c:otherwise>
 	                </c:choose>
-	                </select>
+	               ㄴ</select>
 	                
 	                
 	                

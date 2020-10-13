@@ -187,6 +187,7 @@ public class HomeController {
 		      String userid = "";//아이디
 		      String levels = "";//ROLE_ANONYMOUS
 		      Boolean enabled = false;
+		      Integer point = 0;
 		      Object principal = authentication.getPrincipal();
 		      if (principal instanceof UserDetails) {
 		         //인증이 처리되는 로직(아이디,암호를 스프링시큐리티 던져주고 인증은 스프링에서 알아서 해줌.)
@@ -212,9 +213,10 @@ public class HomeController {
 		         //회원이름 구하기 추가
 		         MemberVO memberVO = memberService.viewMember(userid);
 		         
-		         //session.setAttribute("session_point", memberVO.getPoint()); //포인트
+		         session.setAttribute("session_point", memberVO.getPoint()); //포인트
 		         session.setAttribute("session_username", memberVO.getUser_name());//사용자명
 		           }
+		      System.out.println("------------------포인트 값 출력" + point);
 		      System.out.println("------------------세션 값 출력: " + enabled);
 		      System.out.println("------------------ 사용자 아이디 출력: " + userid);
 		      System.out.println("------------------사용자 권한출력: " + levels);
