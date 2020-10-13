@@ -95,13 +95,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/admin/admin_Member" class="nav-link">
+                <a href="admin_Member" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>회원관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/admin/admin_Board" class="nav-link active">
+                <a href="admin_Board" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>게시판 관리</p>
                 </a>
@@ -122,12 +122,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">상세 보기</h1>
+            <h1 class="m-0 text-dark">게시글 수정</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-              <li class="breadcrumb-item active">게시판 상세보기</li>
+              <li class="breadcrumb-item active">게시글 수정</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -144,15 +144,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-            <form role="form" action="/admin/board_delete" method="POST">
+          
+            <form role="form" action="/admin/admin_BoardUpdate" method="POST">
               <div class="row">
                 <div class="col-sm">
                   <!-- 아이디 input -->
                   <div class="form-group">
                     <label>제목</label>
-                    <div>
-                      <h3>${boardVO.title}</h3>
-                    </div>
+                    <input type="text" class="form-control" value="${boardVO.title}">
                   </div>
                 </div>
               </div>
@@ -160,29 +159,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="col-sm">
                   <!-- 본문내용 div -->
                   <div class="form-group">
-                    <label>내용</label>
-                    <div>
-                      <p>${boardVO.content}</p>
-                    </div>
+                    <div id="summernote">${boardVO.content}</div>
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-sm">
-                  <!-- 파일 input -->
                   <div class="form-group">
                     <label>첨부파일</label>
                     <div>
                     <a href="#">123.jpg</a>
                   </div>
                   </div>
+                  <!-- 파일 input -->
+                  <div class="custom-file">
+                    <label>첨부파일</label>
+                    <input type="file" class="custom-file-input" id="customFile">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
                   </div>
                 </div>
+              </div>
               <!--버튼-->
-              <a href="/admin/admin_BoardUpdate?bno=${boardVO.bno}&page=${pageVO.page}" class="btn btn-outline-primary">수정하기</a>
-              <button type="submit" class="btn btn-outline-danger">삭제</button>
-              <a href="/admin/admin_Board" class="btn btn-outline-warning">목록</a>
-              <input type="hidden" name="bno" value="${boardVO.bno}">
+                <button type="submit" class="btn btn-outline-primary">등록</button>
+                <a href="admin_Board" class="btn btn-outline-danger">목록</a>
             </form>
           </div>
           <!-- /.card-body -->

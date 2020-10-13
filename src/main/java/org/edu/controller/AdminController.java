@@ -6,6 +6,7 @@ import java.util.Locale;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.edu.service.IF_BoardService;
 import org.edu.service.IF_MemberService;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/admin")
@@ -34,6 +36,23 @@ public class AdminController {
 		
 		@Inject
 		private IF_BoardService boardService;
+		
+		
+		/**
+		 *  관리자 -게시물관리 > 수정
+		 */
+		@RequestMapping(value="/admin_BoardUpdate", method = RequestMethod.GET)
+		public String BoardUpdate(@ModelAttribute("pageVO") PageVO pageVO,@RequestParam("bno") Integer bno, Locale locale, Model model)throws Exception{
+		    BoardVO boardVO = boardService.viewBoard(bno);
+		    model.addAttribute("boardVO", boardVO);
+			model.addAttribute("pageVO", pageVO);
+			return"/admin/admin_BoardUpdate";
+		}
+		@RequestMapping(value="/admin_BoardUpdate", method = RequestMethod.POST)
+		public String BoardUpdate(@ModelAttribute("pageVO") PageVO pageVO,BoardVO boardVO,Locale locale, RedirectAttributes rdat) throws Exception{
+			boardService.updateBoard(boardVO);
+			return "redirect:/admin/admin_BoardView?bno=" + boardVO.getBno() + "&page=" + pageVO.getPage();
+		}
 		
 		/**
 		    * 관리자 회원관리 > 삭제 입니다.

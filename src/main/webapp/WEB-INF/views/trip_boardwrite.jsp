@@ -774,8 +774,52 @@
             
              <div class="board_content">
                 <form action="trip_boardwrite" method="post">
-                
-                    <input type="text" class="w_title" name="title" placeholder="제목을 입력해주세요">
+                  <input type="text" class="w_title" name="title" placeholder="제목을 입력해주세요">
+                  <input type="hidden" name="recommend" value=0>
+                  
+                    <select name="bod_type">
+	                   <option value="${session_bod_type}">${session_bod_type}</option>
+	                </select>
+	                 
+	              <select name="bod_name">
+	                <c:choose>
+	                     <c:when test="${session_bod_type eq '먹거리' }">
+	                       <option value="국내먹거리">국내먹거리</option>
+	                       <option value="해외먹거리">해외먹거리</option>
+	                       
+	                         <c:if test="${session_bod_type eq '여행지'}">
+	                          <option value="국내여행지">국내여행지</option>
+	                          <option value="해외여행지">해외여행지</option>
+	                         </c:if>
+	                     </c:when>
+	                     
+	                   <c:otherwise>
+	                    <option value="구경하기">구경하기</option>
+	                    <option value="숙소후기">숙소후기</option>
+	                   </c:otherwise>
+	                </c:choose>
+	                </select>
+	                
+	                
+	                
+                    <!-- <select name="bod_type">
+                    <option value="none">===선택===</option> 
+                    <option value="먹거리">먹거리</option> 
+                    <option value="여행지"> 여행지</option> 
+                    <option value="숙박"> 숙박</option> 
+                    </select>
+                    
+                    <select name="bod_name">
+                    <option value="국내먹거리">국내먹거리</option>
+                    <option value="해외먹거리">해외먹거리</option>
+                    <option value="국내여행지">국내여행지</option>
+                    <option value="해외여행지">해외여행지</option>
+                    <option value="구경하기">구경하기</option>
+                    <option value="숙소후기">숙소후기</option>
+                    </select> -->
+                    
+                    
+                   
                     
                     <input type="hidden" class="w_title" name="writer" value="${session_username}">
                     

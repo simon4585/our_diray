@@ -16,8 +16,17 @@ public class BoardVO {
     //카테고리
     private String bod_type; 
     private String bod_name;
+    
+    
    
-    public String getBod_name() {
+    @Override
+	public String toString() {
+		return "BoardVO [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer + ", regdate="
+				+ regdate + ", update_date=" + update_date + ", view_count=" + view_count + ", reply_count="
+				+ reply_count + ", rnum=" + rnum + ", recommend=" + recommend + ", bod_type=" + bod_type + ", bod_name="
+				+ bod_name + "]";
+	}
+	public String getBod_name() {
 		return bod_name;
 	}
 	public void setBod_name(String bod_name) {
@@ -83,11 +92,7 @@ public class BoardVO {
 	public void setReply_count(int reply_count) {
 		this.reply_count = reply_count;
 	}
-	@Override
-	public String toString() {
-		return "BoardVO [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer + ", regdate="
-				+ regdate + ", update_date=" + update_date + "]";
-	}
+	
 	public Integer getRnum() {
 		return rnum;
 	}

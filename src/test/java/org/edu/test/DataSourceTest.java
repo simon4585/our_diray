@@ -75,12 +75,15 @@ public class DataSourceTest {
    @Test
    public void testInsertBoard() throws Exception {
       BoardVO boardVO = new BoardVO();
-      boardVO.setBno(5);
+      boardVO.setBno(800);
       boardVO.setTitle("위대한 여정");
       boardVO.setContent("첫 발걸음");
       boardVO.setWriter("백시몬");
       boardVO.setView_count(0);
       boardVO.setReply_count(0);
+      boardVO.setRecommend(0);
+      boardVO.setBod_type("먹거리");
+      boardVO.setBod_name("국내먹거리");
       boardService.insertBoard(boardVO);
    }
    @Test

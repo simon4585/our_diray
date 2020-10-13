@@ -27,8 +27,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<selectKey keyProperty="bno" resultType="int" order="BEFORE">
 			SELECT BNO_SEQ.nextval FROM DUAL
 	</selectKey>
-		insert into tbl_board (bno,title,content,writer,regdate,view_count,reply_count,recommend) 
-		values (#{bno},#{title},#{content},#{writer},sysdate,#{view_count},#{reply_count},#{recommend}) 
+		insert into tbl_board (bno,title,content,writer,regdate,view_count,reply_count,recommend,bod_type,bod_name) 
+		values (#{bno},#{title},#{content},#{writer},sysdate,#{view_count},#{reply_count},#{recommend},#{bod_type},#{bod_name}) 
 	</insert>
 	
 	<select id="selectBoard" resultType="org.edu.vo.BoardVO">
