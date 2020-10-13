@@ -151,7 +151,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <!-- 아이디 input -->
                   <div class="form-group">
                     <label>제목</label>
-                    <input type="text" class="form-control" value="${boardVO.title}">
+                    <select name="bod_type">
+	                   <c:forEach items="${boardTypeMenu}" var="boardTypeMenu">
+	                   <option value="${boardTypeMenu.bod_type}">${boardTypeMenu.bod_type}</option>
+	                   </c:forEach>
+	                </select>
+	                <select name="bod_name">
+	                   <c:forEach items="${boardTypeMenu}" var="boardTypeMenu">
+	                   <option value="${boardTypeMenu.bod_name}">${boardTypeMenu.bod_name}</option>
+	                   </c:forEach>
+	                </select>
+                    <input type="text" name="title" class="form-control" value="${boardVO.title}">
+                  </div>
+                  <div class="form-group">
+                  <label>작성자</label>
+                  <input type="text" value="${boardVO.writer}" name="writer" readonly="readonly">
                   </div>
                 </div>
               </div>
@@ -159,7 +173,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="col-sm">
                   <!-- 본문내용 div -->
                   <div class="form-group">
-                    <div id="summernote">${boardVO.content}</div>
+                  <textarea name="content" id="summernote" >${boardVO.content}</textarea>
+                   <%-- <div id="summernote" name="content" value="${boardVO.content}">${boardVO.content}</div> --%>
                   </div>
                 </div>
               </div>
@@ -179,6 +194,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </div>
                 </div>
               </div>
+              <input type="hidden" name="recommend" value="${boardVO.recommend}">
+              <input type="hidden" name="bno" value="${boardVO.bno}">
+              <input type="hidden" name="page" value="${pageVO.page}">
               <!--버튼-->
                 <button type="submit" class="btn btn-outline-primary">등록</button>
                 <a href="admin_Board" class="btn btn-outline-danger">목록</a>

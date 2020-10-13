@@ -65,8 +65,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		writer = #{writer},
 		update_date = sysdate,
 		view_count = #{view_count},
-		reply_count = #{reply_count}
-		recommend = #{recommend}
+		reply_count = #{reply_count},
+		recommend = #{recommend},
+		bod_type = #{bod_type},
+		bod_name = #{bod_name}
 		where bno = #{bno}
 	</update>
 	<!-- 게시글 삭제 -->

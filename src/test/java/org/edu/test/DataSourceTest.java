@@ -87,6 +87,23 @@ public class DataSourceTest {
       boardService.insertBoard(boardVO);
    }
    @Test
+   public void testUpdateBoard()throws Exception{
+	  BoardVO boardVO = new BoardVO();
+	  boardVO.setBno(315);
+	  boardVO.setTitle("수정테스트입니다");
+      boardVO.setContent("수정테스트입니다.");
+      boardVO.setWriter("시몬스");
+      boardVO.setView_count(0);
+      boardVO.setReply_count(0);
+      boardVO.setRecommend(0);
+      boardVO.setBod_type("먹거리");
+      boardVO.setBod_name("국내먹거리");
+	  
+	  
+	  
+	  boardService.updateBoard(boardVO);
+   }
+   @Test
    public void recommendBoard() throws Exception{
 	  
 	  boardService.recommendBoard(57);
